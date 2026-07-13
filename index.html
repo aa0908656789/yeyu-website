@@ -3,380 +3,914 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>夜語 - 精品按摩服務｜夜色低語秘密時光</title>
     <meta name="description" content="夜語提供精品按摩服務，包含精油舒壓、深層組織、水床泡泡浴等多項頂級服務。專業團隊、私密空間、營業時間13:00-23:30。">
+    <title>夜語 - 精品按摩服務｜夜色低語秘密時光</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Microsoft YaHei', Arial, sans-serif; background: #1a1a1a; color: #fff; line-height: 1.6; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Marquee */
-        .marquee-container { background: #d4af37; color: #000; padding: 10px 0; overflow: hidden; }
-        .marquee-content { display: flex; animation: scroll 20s linear infinite; white-space: nowrap; font-weight: bold; font-size: 16px; }
-        .marquee-item { padding: 0 40px; display: inline-block; }
-        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        
-        /* Navigation */
-        nav { background: rgba(0,0,0,0.9); padding: 12px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #d4af37; }
-        nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 20px; font-weight: bold; color: #d4af37; display: flex; align-items: center; gap: 8px; }
-        .logo img { height: 40px; width: auto; }
-        .nav-menu { display: flex; list-style: none; gap: 25px; align-items: center; }
-        .nav-menu a { color: #fff; text-decoration: none; transition: color 0.3s; font-size: 13px; }
-        .nav-menu a:hover { color: #d4af37; }
-        .nav-btn { background: #d4af37; color: #000; padding: 8px 16px; border-radius: 20px; cursor: pointer; text-decoration: none; font-weight: bold; font-size: 12px; }
-        .nav-btn:hover { background: #e5c158; }
-        .menu-toggle { display: none; background: none; border: none; color: #d4af37; font-size: 24px; cursor: pointer; }
-        .mobile-menu { display: none; position: absolute; top: 60px; left: 0; right: 0; background: rgba(0,0,0,0.95); flex-direction: column; padding: 15px; gap: 10px; z-index: 99; }
-        .mobile-menu a { color: #fff; text-decoration: none; padding: 10px; border-bottom: 1px solid #333; }
-        .mobile-menu a:hover { color: #d4af37; }
-        
-        /* Hero Section */
-        .hero { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 40px 0; }
-        .hero-content { display: flex; align-items: center; gap: 30px; }
-        .hero-text { flex: 1; }
-        .hero-image { flex: 1; }
-        .hero-image img { width: 100%; height: auto; border-radius: 10px; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3); }
-        
-        .hero h1 { font-size: 36px; margin-bottom: 15px; color: #d4af37; }
-        .hero p { font-size: 16px; margin-bottom: 20px; color: #ccc; }
-        .hero-buttons { display: flex; gap: 15px; }
-        .btn { padding: 10px 25px; border: 2px solid #d4af37; background: transparent; color: #d4af37; cursor: pointer; border-radius: 5px; font-size: 14px; transition: all 0.3s; text-decoration: none; display: inline-block; }
-        .btn:hover { background: #d4af37; color: #000; }
-        .btn-primary { background: #d4af37; color: #000; }
-        .btn-primary:hover { background: #e5c158; }
-        
-        /* Features */
-        .features { padding: 40px 0; }
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .feature-card { background: rgba(212, 175, 55, 0.1); padding: 20px; border-radius: 8px; border-left: 3px solid #d4af37; }
-        .feature-card h3 { color: #d4af37; margin-bottom: 10px; font-size: 14px; }
-        .feature-card p { font-size: 12px; color: #ccc; }
-        
-        /* Models Section */
-        .models { background: rgba(212, 175, 55, 0.05); padding: 40px 0; }
-        .models h2 { font-size: 28px; color: #d4af37; margin-bottom: 30px; text-align: center; }
-        .models-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
-        .model-card { background: rgba(0,0,0,0.5); border-radius: 8px; overflow: hidden; border: 1px solid #d4af37; transition: transform 0.3s; }
-        .model-card:hover { transform: translateY(-5px); }
-        .model-image { width: 100%; height: 220px; object-fit: cover; }
-        .model-info { padding: 15px; text-align: center; }
-        .model-info h3 { color: #d4af37; margin-bottom: 8px; font-size: 16px; }
-        .model-info p { color: #ccc; font-size: 12px; margin-bottom: 10px; }
-        .model-btn { display: inline-block; background: #d4af37; color: #000; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 12px; font-weight: bold; }
-        .model-btn:hover { background: #e5c158; }
-        
-        /* Services Section */
-        .services { background: rgba(212, 175, 55, 0.05); padding: 40px 0; }
-        .services h2 { font-size: 28px; color: #d4af37; margin-bottom: 30px; text-align: center; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .service-item { background: rgba(0,0,0,0.5); border-radius: 8px; overflow: hidden; border: 1px solid #d4af37; }
-        .service-image { width: 100%; height: 200px; object-fit: cover; }
-        .service-content { padding: 15px; }
-        .service-content h3 { color: #d4af37; margin-bottom: 10px; font-size: 16px; }
-        .service-content p { color: #ccc; font-size: 13px; line-height: 1.6; margin-bottom: 10px; }
-        .service-price { color: #d4af37; font-weight: bold; font-size: 14px; }
-        
-        /* About */
-        .about { background: rgba(212, 175, 55, 0.05); padding: 40px 0; }
-        .about h2 { font-size: 28px; color: #d4af37; margin-bottom: 20px; }
-        .about p { font-size: 14px; line-height: 1.8; margin-bottom: 15px; }
-        
-        /* Footer */
-        footer { background: #000; padding: 40px 0; text-align: center; border-top: 1px solid #d4af37; }
-        .footer-banner { margin: 30px 0; }
-        .footer-banner img { width: 100%; max-width: 600px; height: auto; border-radius: 8px; box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3); }
-        .footer-content { margin-top: 30px; font-size: 13px; }
-        
-        /* Floating Button */
-        .floating-btn { position: fixed; bottom: 20px; right: 20px; background: #d4af37; color: #000; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); animation: pulse 2s infinite; z-index: 99; text-decoration: none; }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); } 50% { box-shadow: 0 4px 25px rgba(212, 175, 55, 0.8); } }
-        
-        /* Responsive */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', 'PingFang SC', sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* 導航欄 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #daa520, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: #daa520;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #daa520, #ffd700);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* 主容器 */
+        .container {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 首頁 */
+        .hero {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(139, 69, 19, 0.1));
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #daa520, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #b0b0b0;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid #daa520;
+            background: transparent;
+            color: #daa520;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #daa520;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #daa520, #ffd700);
+            color: #000;
+            border: none;
+        }
+
+        /* 跑馬燈 */
+        .marquee-section {
+            background: rgba(218, 165, 32, 0.05);
+            padding: 2rem;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .marquee {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(218, 165, 32, 0.1);
+            border-radius: 10px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            min-width: 300px;
+            text-align: center;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 內容區域 */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #daa520, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(218, 165, 32, 0.05);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #daa520;
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.2);
+        }
+
+        .card h3 {
+            color: #daa520;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-price {
+            color: #ffd700;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(218, 165, 32, 0.2);
+            color: #daa520;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* 圖片庫 */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: #daa520;
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* 模態框 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: #1a1a1a;
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid rgba(218, 165, 32, 0.3);
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #daa520;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: #ffd700;
+        }
+
+        /* 優惠卡片 */
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(139, 69, 19, 0.1));
+            border: 2px solid #daa520;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.3);
+        }
+
+        .promo-card h3 {
+            color: #ffd700;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .promo-code {
+            background: rgba(218, 165, 32, 0.3);
+            color: #ffd700;
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+
+        .promo-validity {
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* 聯絡表單 */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: rgba(218, 165, 32, 0.05);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #daa520;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 5px;
+            color: #e0e0e0;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* 頁腳 */
+        footer {
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid rgba(218, 165, 32, 0.2);
+            padding: 2rem;
+            text-align: center;
+            color: #808080;
+        }
+
+        /* 響應式 */
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .menu-toggle { display: block; }
-            .mobile-menu.active { display: flex; }
-            
-            .hero-content { flex-direction: column; gap: 20px; }
-            .hero h1 { font-size: 24px; }
-            .hero p { font-size: 14px; }
-            .hero-buttons { flex-direction: column; }
-            
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .feature-card { padding: 15px; }
-            .feature-card h3 { font-size: 12px; }
-            .feature-card p { font-size: 11px; }
-            
-            .models-grid { grid-template-columns: repeat(2, 1fr); }
-            .model-image { height: 150px; }
-            
-            .services-grid { grid-template-columns: 1fr; }
-            .service-image { height: 150px; }
-            .service-content { padding: 12px; }
-            .service-content h3 { font-size: 14px; }
-            .service-content p { font-size: 12px; }
-            
-            .marquee-content { font-size: 12px; }
-            .marquee-item { padding: 0 20px; }
-            
-            .logo img { height: 35px; }
-            .logo { font-size: 16px; }
-            
-            nav .container { padding: 0 10px; }
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .image-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        /* 浮窗按鈕 */
+        .floating-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #daa520, #ffd700);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.4);
+            transition: all 0.3s;
+            z-index: 999;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .floating-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(218, 165, 32, 0.6);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(218, 165, 32, 0.4); }
+            50% { box-shadow: 0 10px 50px rgba(218, 165, 32, 0.8); }
         }
     </style>
 </head>
 <body>
-    <!-- Marquee -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span class="marquee-item">🌟 最新上菜妹妹已到位 🌟</span>
-            <span class="marquee-item">💎 VIP 雙飛服務熱烈推薦 💎</span>
-            <span class="marquee-item">🎁 新客優惠進行中 🎁</span>
-            <span class="marquee-item">✨ 水床泡泡浴體驗 ✨</span>
-            <span class="marquee-item">🌟 最新上菜妹妹已到位 🌟</span>
-            <span class="marquee-item">💎 VIP 雙飛服務熱烈推薦 💎</span>
-            <span class="marquee-item">🎁 新客優惠進行中 🎁</span>
-            <span class="marquee-item">✨ 水床泡泡浴體驗 ✨</span>
+    <!-- 導航欄 -->
+    <nav>
+        <div class="logo">🌙 夜語</div>
+        <ul>
+            <li><a onclick="showPage('home')" class="nav-link active">首頁</a></li>
+            <li><a onclick="showPage('services')" class="nav-link">服務風格</a></li>
+            <li><a onclick="showPage('models')" class="nav-link">點我看最新上菜妹妹</a></li>
+            <li><a onclick="showPage('quality')" class="nav-link">服務品質</a></li>
+            <li><a onclick="showPage('promotions')" class="nav-link">優惠活動</a></li>
+            <li><a onclick="showPage('contact')" class="nav-link">聯絡我們</a></li>
+        </ul>
+        <a href="https://line.me/ti/p/2JZxGd_ERb" class="nav-button">立即預約</a>
+    </nav>
+
+    <!-- 主容器 -->
+    <div class="container">
+        <!-- 首頁 -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h1>🌙 夜語 - 精品按摩服務</h1>
+                <p>夜色低語·專屬於你的秘密時光</p>
+                <p style="font-size: 1rem; color: #999;">不是每個夜晚，都值得被記住。但在這裡，每一刻都是獨特的體驗。</p>
+                <div class="hero-buttons">
+                    <a href="https://line.me/ti/p/2JZxGd_ERb" class="btn btn-primary">立即預約</a>
+                    <button class="btn" onclick="showPage('services')">了解更多</button>
+                </div>
+            </div>
+
+            <!-- 跑馬燈 -->
+            <div class="marquee-section">
+                <div class="marquee">
+                    <div class="marquee-item">✨ 預約制服務，重視每位貴賓的隱私</div>
+                    <div class="marquee-item">♥️ 舒適沉浸式空間設計</div>
+                    <div class="marquee-item">🤍 專屬接待，細緻服務體驗</div>
+                    <div class="marquee-item">✨ 超多種你沒玩過的玩法</div>
+                    <div class="marquee-item">📅 彈性預約時段</div>
+                    <div class="marquee-item">✨ 預約制服務，重視每位貴賓的隱私</div>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2 class="section-title">🌟 關於夜語</h2>
+                <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem;">
+                    夜語希望打造一處能放慢腳步的空間，從環境、服務到細節，讓每一次停留，都成為值得期待的放鬆時刻。
+                </p>
+
+                <div style="text-align: center; margin: 3rem 0;">
+                    <h3 style="color: #daa520; margin-bottom: 1rem;">📍 營業時間</h3>
+                    <p style="font-size: 1.2rem;">每日下午 1:00pm - 晚上 11:30pm</p>
+                    <p style="color: #999; margin-top: 1rem;">一律現金交易 | 尊重彼此隱私</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 服務頁面 -->
+        <div id="services" class="page">
+            <div class="content">
+                <h2 class="section-title">💎 我們的服務</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">選擇最適合您的服務，享受頂級體驗</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>精油舒壓按摩</h3>
+                        <p>使用頂級精油，專業手法舒緩身心壓力</p>
+                        <div class="card-price">$2,700 / 60分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">頂級精油</span>
+                            <span class="tag">專業手法</span>
+                            <span class="tag">私密空間</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>深層組織按摩</h3>
+                        <p>針對肌肉深層，有效舒緩疲勞</p>
+                        <div class="card-price">$2,500 / 60分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">深層舒緩</span>
+                            <span class="tag">專業技巧</span>
+                            <span class="tag">效果顯著</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>全身放鬆療程</h3>
+                        <p>完整的全身放鬆體驗，讓您徹底放鬆</p>
+                        <div class="card-price">$3,200 / 90分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">全身護理</span>
+                            <span class="tag">極致享受</span>
+                            <span class="tag">完全放鬆</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>舒壓根部保養</h3>
+                        <p>老饕最愛的服務項目之一</p>
+                        <div class="card-price">$ 2700 up / 40分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">根部護理</span>
+                            <span class="tag">超級舒服</span>
+                            <span class="tag">放鬆身心</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>帝王水床泡泡浴</h3>
+                        <p>懂得都懂 你知道我知道就好!</p>
+                        <div class="card-price">$ 2700 up / 40分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">超級舒服</span>
+                            <span class="tag">促進循環</span>
+                            <span class="tag">健康養生</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>VIP 雙飛 天倫之樂</h3>
+                        <p>綜合多種服務，頂級享受體驗</p>
+                        <div class="card-price">$ 2700 up / 40分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">多項服務</span>
+                            <span class="tag">頂級享受</span>
+                            <span class="tag">超值推薦</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模特兒頁面 -->
+        <div id="models" class="page">
+            <div class="content">
+                <h2 class="section-title">👸 最新上菜妹妹</h2>
+                <div class="image-gallery" id="imageGallery">
+                    <!-- 圖片會由 JavaScript 動態生成 -->
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="color: #999;">✨ 首次預約歡迎現場與妹妹溝通</p>
+                    <a href="https://line.me/ti/p/2JZxGd_ERb" class="btn btn-primary" style="margin-top: 1rem;">預約妹妹</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 服務品質頁面 -->
+        <div id="quality" class="page">
+            <div class="content">
+                <h2 class="section-title">⭐ 我們的服務品質</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">追求卓越，為您提供最頂級的體驗</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>🏰 頂級環境設施</h3>
+                        <p>精心打造的私密空間，配備高級音響、香薰系統、恆溫設施</p>
+                    </div>
+                    <div class="card">
+                        <h3>👥 專業技術團隊</h3>
+                        <p>經過嚴格培訓的專業人員，掌握多種按摩和護理技巧</p>
+                    </div>
+                    <div class="card">
+                        <h3>✨ 頂級產品使用</h3>
+                        <p>採用進口精油、護膚品，確保最佳效果和安全性</p>
+                    </div>
+                    <div class="card">
+                        <h3>🔒 絕對隱私保護</h3>
+                        <p>完全保密制度，客人隱私是我們最高的優先級</p>
+                    </div>
+                    <div class="card">
+                        <h3>🧼 衛生消毒標準</h3>
+                        <p>每次服務後進行深度消毒，符合醫療級衛生標準</p>
+                    </div>
+                    <div class="card">
+                        <h3>💎 客製化服務</h3>
+                        <p>根據客人需求提供個性化服務方案</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 class="section-title">我們的承諾</h3>
+                    <div class="grid">
+                        <div class="card">
+                            <h3>100% 滿意保證</h3>
+                            <p>如果您對我們的服務不滿意，我們提供退款服務。您的滿意是我們的目標 ! !</p>
+                        </div>
+                        <div class="card">
+                            <h3>24小時客服</h3>
+                            <p>我們的客服團隊隨時待命，為您解答任何問題。聯繫我們，我們會立即回應。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 優惠活動頁面 -->
+        <div id="promotions" class="page">
+            <div class="content">
+                <h2 class="section-title">🎉 優惠活動</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">享受最優惠的價格，體驗頂級服務</p>
+                <div class="promo-grid">
+                    <div class="promo-card">
+                        <h3>體驗全館2700 隨便點</h3>
+                        <p>新客優惠</p>
+                        <p>看上哪一個 體驗全館2700 隨便點</p>
+                        <div class="promo-code">WELCOME9</div>
+                        <div class="promo-validity">有效期至: 2026年12月31日</div>
+                    </div>
+                    <div class="promo-card">
+                        <h3>體驗雙飛服務</h3>
+                        <p>會員優惠</p>
+                        <p>體驗雙飛服務</p>
+                        <div class="promo-code">MEMBER</div>
+                        <div class="promo-validity">有效期至: 長期有效</div>
+                    </div>
+                    <div class="promo-card">
+                        <h3>體驗水床服務</h3>
+                        <p>套餐優惠</p>
+                        <p>體驗水床服務</p>
+                        <div class="promo-code">PACKAGE</div>
+                        <div class="promo-validity">有效期至: 2026年12月31日</div>
+                    </div>
+                    <div class="promo-card">
+                        <h3>體驗變裝服務</h3>
+                        <p>套餐獎勵</p>
+                        <p>變成你想要的樣子</p>
+                        <div class="promo-code">REFER</div>
+                        <div class="promo-validity">有效期至: 長期有效</div>
+                    </div>
+                    <div class="promo-card">
+                        <h3>抽獎體驗外出服務</h3>
+                        <p>生日月優惠</p>
+                        <p>神秘小優惠趕緊來搶取</p>
+                        <div class="promo-code">BIRTHDAY</div>
+                        <div class="promo-validity">有效期至: 長期有效</div>
+                    </div>
+                    <div class="promo-card">
+                        <h3>專享福利</h3>
+                        <p>VIP 會員計畫</p>
+                        <p>升級為 VIP 會員享受專屬服務</p>
+                        <div class="promo-code">VIP</div>
+                        <div class="promo-validity">有效期至: 長期有效</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 聯絡頁面 -->
+        <div id="contact" class="page">
+            <div class="content">
+                <h2 class="section-title">📞 聯絡我們</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">有任何問題或建議，歡迎隨時與我們聯繫</p>
+                <div class="grid" style="margin-bottom: 3rem;">
+                    <div class="card">
+                        <h3>💬 LINE 客服</h3>
+                        <p>最快速的聯繫方式</p>
+                        <p style="margin-top: 1rem; font-weight: bold; color: #ffd700;">@yeyu057</p>
+                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="btn" style="margin-top: 1rem; display: inline-block;">加入 LINE</a>
+                    </div>
+                    <div class="card">
+                        <h3>🕐 營業時間</h3>
+                        <p>隨時歡迎您光臨</p>
+                        <p style="margin-top: 1rem; font-weight: bold; color: #ffd700;">13:00 - 23:30</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title" style="margin-top: 3rem;">留下您的訊息</h3>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="text" placeholder="請輸入您的姓名">
+                    </div>
+                    <div class="form-group">
+                        <label>電話</label>
+                        <input type="tel" placeholder="請輸入您的電話">
+                    </div>
+                    <div class="form-group">
+                        <label>電子郵件</label>
+                        <input type="email" placeholder="請輸入您的電子郵件">
+                    </div>
+                    <div class="form-group">
+                        <label>訊息</label>
+                        <textarea placeholder="請輸入您的訊息"></textarea>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">送出訊息</button>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">
-                <img src="images/logo.jpg" alt="夜語 YEYU">
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">首頁</a></li>
-                <li><a href="#models">最新上菜妹妹</a></li>
-                <li><a href="#services">服務風格</a></li>
-                <li><a href="#about">關於我們</a></li>
-                <li><a href="#contact">聯絡我們</a></li>
-            </ul>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-            <a href="https://line.me/ti/p/2JZxGd_ERb" class="nav-btn">預約</a>
+
+    <!-- 圖片模態框 -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <img id="modalImage" src="" alt="">
         </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#home" onclick="toggleMenu()">首頁</a>
-            <a href="#models" onclick="toggleMenu()">最新上菜妹妹</a>
-            <a href="#services" onclick="toggleMenu()">服務風格</a>
-            <a href="#about" onclick="toggleMenu()">關於我們</a>
-            <a href="#contact" onclick="toggleMenu()">聯絡我們</a>
-            <a href="https://line.me/ti/p/2JZxGd_ERb" style="background: #d4af37; color: #000; text-align: center;">加入 LINE 預約</a>
-        </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>🌙 夜語</h1>
-                    <p>精品按摩服務</p>
-                    <p>夜色低語·專屬於你的秘密時光</p>
-                    <div class="hero-buttons">
-                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="btn btn-primary">立即預約</a>
-                        <button class="btn" onclick="document.getElementById('models').scrollIntoView({behavior: 'smooth'})">看妹妹</button>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="images/hero-banner.jpg" alt="夜語精品按摩服務">
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Features -->
-    <section class="features">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>✨ 預約制服務</h3>
-                    <p>重視隱私</p>
-                </div>
-                <div class="feature-card">
-                    <h3>♥️ 舒適空間</h3>
-                    <p>沉浸式設計</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🤍 專屬接待</h3>
-                    <p>細緻服務</p>
-                </div>
-                <div class="feature-card">
-                    <h3>✨ 超多玩法</h3>
-                    <p>多種選擇</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📅 彈性預約</h3>
-                    <p>時段靈活</p>
-                </div>
-                <div class="feature-card">
-                    <h3>✨ 隱私保護</h3>
-                    <p>安心享受</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Models Section -->
-    <section class="models" id="models">
-        <div class="container">
-            <h2>🌟 最新上菜妹妹</h2>
-            <div class="models-grid">
-                <div class="model-card">
-                    <img src="images/LINE_ALBUM_2026.7.8_260709_1.jpg" alt="妹妹 1" class="model-image">
-                    <div class="model-info">
-                        <h3>新妹妹 1</h3>
-                        <p>年輕活力</p>
-                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
-                    </div>
-                </div>
-                
-                <div class="model-card">
-                    <img src="images/LINE_ALBUM_2026.7.8_260709_2.jpg" alt="妹妹 2" class="model-image">
-                    <div class="model-info">
-                        <h3>新妹妹 2</h3>
-                        <p>溫柔嬌媚</p>
-                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
-                    </div>
-                </div>
-                
-                <div class="model-card">
-                    <img src="images/LINE_ALBUM_2026.7.8_260709_3.jpg" alt="妹妹 3" class="model-image">
-                    <div class="model-info">
-                        <h3>新妹妹 3</h3>
-                        <p>性感迷人</p>
-                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
-                    </div>
-                </div>
-                
-                <div class="model-card">
-                    <img src="images/LINE_ALBUM_2026.7.8_260709_4.jpg" alt="妹妹 4" class="model-image">
-                    <div class="model-info">
-                        <h3>新妹妹 4</h3>
-                        <p>專業體貼</p>
-                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
-                    </div>
-                </div>
-                
-                <div class="model-card">
-                    <img src="images/LINE_ALBUM_2026.7.8_260709_5.jpg" alt="妹妹 5" class="model-image">
-                    <div class="model-info">
-                        <h3>新妹妹 5</h3>
-                        <p>甜蜜可人</p>
-                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
-                    </div>
-                </div>
-                
-                <div class="model-card">
-                    <img src="images/LINE_ALBUM_2026.7.8_260709_6.jpg" alt="妹妹 6" class="model-image">
-                    <div class="model-info">
-                        <h3>新妹妹 6</h3>
-                        <p>氣質優雅</p>
-                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2>🌟 服務風格</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <img src="images/service-massage-1.png" alt="精油舒壓按摩" class="service-image">
-                    <div class="service-content">
-                        <h3>精油舒壓按摩</h3>
-                        <p>使用高級精油進行專業舒壓按摩，舒緩肌肉疲勞。</p>
-                        <div class="service-price">💰 詢問報價</div>
-                    </div>
-                </div>
-                
-                <div class="service-item">
-                    <img src="images/service-vip-room.png" alt="VIP 雙飛 天倫之樂" class="service-image">
-                    <div class="service-content">
-                        <h3>VIP 雙飛 天倫之樂</h3>
-                        <p>頂級 VIP 房間，享受雙人專業服務。</p>
-                        <div class="service-price">💰 詢問報價</div>
-                    </div>
-                </div>
-                
-                <div class="service-item">
-                    <img src="images/service-massage-2.png" alt="深層組織按摩" class="service-image">
-                    <div class="service-content">
-                        <h3>深層組織按摩</h3>
-                        <p>針對深層肌肉進行專業按摩，有效舒緩疲勞。</p>
-                        <div class="service-price">💰 詢問報價</div>
-                    </div>
-                </div>
-                
-                <div class="service-item">
-                    <img src="images/service-massage-3.png" alt="全身舒適按摩" class="service-image">
-                    <div class="service-content">
-                        <h3>全身舒適按摩</h3>
-                        <p>專業技師進行全身按摩，帶來完整放鬆。</p>
-                        <div class="service-price">💰 詢問報價</div>
-                    </div>
-                </div>
-                
-                <div class="service-item">
-                    <img src="images/service-massage-4.png" alt="專業護理按摩" class="service-image">
-                    <div class="service-content">
-                        <h3>專業護理按摩</h3>
-                        <p>結合護理技巧的專業按摩，提升肌膚質感。</p>
-                        <div class="service-price">💰 詢問報價</div>
-                    </div>
-                </div>
-                
-                <div class="service-item">
-                    <img src="images/service-bubble-bath.png" alt="水床泡泡浴" class="service-image">
-                    <div class="service-content">
-                        <h3>水床泡泡浴</h3>
-                        <p>享受頂級水床泡泡浴體驗，帶來極致放鬆。</p>
-                        <div class="service-price">💰 詢問報價</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About -->
-    <section class="about" id="about">
-        <div class="container">
-            <h2>🌟 關於夜語</h2>
-            <p>夜語希望打造一處能放慢腳步的空間，從環境、服務到細節，讓每一次停留，都成為值得期待的放鬆時刻。</p>
-            <p>我們提供多樣化的頂級按摩服務，擁有專業的技師團隊和舒適的私密空間。</p>
-            <h3 style="color: #d4af37; margin-top: 20px; margin-bottom: 10px;">📍 營業時間</h3>
-            <p>每日下午 1:00pm - 晚上 11:30pm</p>
-            <p style="margin-top: 15px; color: #aaa;">一律現金交易 | 尊重彼此隱私</p>
-        </div>
-    </section>
-    
-    <!-- Floating Button -->
-    <a href="https://line.me/ti/p/2JZxGd_ERb" class="floating-btn" title="加入 LINE 預約">💬</a>
-    
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-banner">
-            <img src="images/footer-banner.jpg" alt="夜語夜景">
-        </div>
-        <div class="footer-content">
-            <h3 style="color: #d4af37; margin-bottom: 15px;">聯絡我們</h3>
-            <p style="margin-bottom: 10px;">📱 加入 LINE 官方帳號預約：<a href="https://line.me/ti/p/2JZxGd_ERb" style="color: #d4af37; text-decoration: none;">點擊加入</a></p>
-            <p style="margin-bottom: 10px;">⏰ 營業時間：下午 1:00pm - 晚上 11:30pm</p>
-            <p style="margin-top: 20px; color: #999; font-size: 12px;">© 2026 夜語 YEYU. All rights reserved.</p>
-            <p style="margin-top: 8px; color: #d4af37; font-size: 12px;">夜色低語·專屬於你的秘密時光</p>
-        </div>
+    </div>
+
+    <!-- 浮窗按鈕 -->
+    <a href="https://line.me/ti/p/2JZxGd_ERb" class="floating-button pulse" title="加入 LINE 預約">💬</a>
+
+    <!-- 頁腳 -->
+    <footer>
+        <p>© 2026 夜語 YEYU. All rights reserved.</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem;">夜色低語·專屬於你的秘密時光</p>
     </footer>
-    
+
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
+        // 圖片列表
+        const images = [
+            'images/LINE_ALBUM_2026.7.8_260709_1.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_2.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_3.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_4.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_5.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_6.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_7.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_8.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_9.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_10.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_11.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_12.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_13.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_14.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_15.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_16.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_17.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_18.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_19.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_20.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_21.jpg',
+            'images/LINE_ALBUM_2026.7.8_260709_22.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_1.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_2.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_3.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_4.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_5.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_6.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_7.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_8.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_9.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_10.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_11.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_12.jpg',
+            'images/LINE_ALBUM_昨天沒傳到的_260709_13.jpg'
+        ];
+
+        function initGallery() {
+            const gallery = document.getElementById('imageGallery');
+            images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.onclick = () => openModal(img);
+                const imgElement = document.createElement('img');
+                imgElement.src = img;
+                imgElement.alt = `妹妹 ${index + 1}`;
+                item.appendChild(imgElement);
+                gallery.appendChild(item);
+            });
+        }
+
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = src;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => link.classList.remove('active'));
+            event.target.classList.add('active');
+
+            window.scrollTo(0, 0);
+        }
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initGallery();
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks[0].classList.add('active');
+        });
+
+        // 點擊模態框外部關閉
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
         }
     </script>
 </body>
