@@ -69,6 +69,8 @@
             cursor: pointer;
             font-weight: bold;
             transition: transform 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .nav-button:hover {
@@ -97,9 +99,7 @@
 
         /* 首頁 */
         .hero {
-            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(139, 69, 19, 0.1)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(218,165,32,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(139, 69, 19, 0.1));
             padding: 6rem 2rem;
             text-align: center;
             min-height: 600px;
@@ -248,6 +248,29 @@
         .card p {
             color: #b0b0b0;
             line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-price {
+            color: #ffd700;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: rgba(218, 165, 32, 0.2);
+            color: #daa520;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
         }
 
         /* 圖片庫 */
@@ -337,6 +360,87 @@
             color: #ffd700;
         }
 
+        /* 優惠卡片 */
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .promo-card {
+            background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(139, 69, 19, 0.1));
+            border: 2px solid #daa520;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.3);
+        }
+
+        .promo-card h3 {
+            color: #ffd700;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .promo-code {
+            background: rgba(218, 165, 32, 0.3);
+            color: #ffd700;
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+
+        .promo-validity {
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* 聯絡表單 */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background: rgba(218, 165, 32, 0.05);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #daa520;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 5px;
+            color: #e0e0e0;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
         /* 頁腳 */
         footer {
             background: rgba(10, 10, 10, 0.95);
@@ -424,7 +528,7 @@
         <ul>
             <li><a onclick="showPage('home')" class="nav-link active">首頁</a></li>
             <li><a onclick="showPage('services')" class="nav-link">服務風格</a></li>
-            <li><a onclick="showPage('models')" class="nav-link">最新妹妹</a></li>
+            <li><a onclick="showPage('models')" class="nav-link">點我看最新上菜妹妹</a></li>
             <li><a onclick="showPage('quality')" class="nav-link">服務品質</a></li>
             <li><a onclick="showPage('promotions')" class="nav-link">優惠活動</a></li>
             <li><a onclick="showPage('contact')" class="nav-link">聯絡我們</a></li>
@@ -464,22 +568,6 @@
                     夜語希望打造一處能放慢腳步的空間，從環境、服務到細節，讓每一次停留，都成為值得期待的放鬆時刻。
                 </p>
 
-                <h2 class="section-title">✨ 我們的特色</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>🏆 頂級環境</h3>
-                        <p>精心打造的私密空間，讓您感受最高級的享受</p>
-                    </div>
-                    <div class="card">
-                        <h3>👥 專業團隊</h3>
-                        <p>經驗豐富的專業人士，提供最貼心的服務</p>
-                    </div>
-                    <div class="card">
-                        <h3>🔒 隱私保護</h3>
-                        <p>絕對保密，您的隱私是我們最高的優先</p>
-                    </div>
-                </div>
-
                 <div style="text-align: center; margin: 3rem 0;">
                     <h3 style="color: #daa520; margin-bottom: 1rem;">📍 營業時間</h3>
                     <p style="font-size: 1.2rem;">每日下午 1:00pm - 晚上 11:30pm</p>
@@ -491,31 +579,68 @@
         <!-- 服務頁面 -->
         <div id="services" class="page">
             <div class="content">
-                <h2 class="section-title">💎 服務風格</h2>
+                <h2 class="section-title">💎 我們的服務</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">選擇最適合您的服務，享受頂級體驗</p>
                 <div class="grid">
                     <div class="card">
-                        <h3>💆 精油舒壓</h3>
-                        <p>使用高級精油，舒緩身心疲勞，提升整體放鬆感受</p>
+                        <h3>精油舒壓按摩</h3>
+                        <p>使用頂級精油，專業手法舒緩身心壓力</p>
+                        <div class="card-price">$2,700 / 60分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">頂級精油</span>
+                            <span class="tag">專業手法</span>
+                            <span class="tag">私密空間</span>
+                        </div>
                     </div>
                     <div class="card">
-                        <h3>🌊 水床泡泡浴</h3>
-                        <p>獨特的水床體驗，結合泡泡浴的舒適感，極致享受</p>
+                        <h3>深層組織按摩</h3>
+                        <p>針對肌肉深層，有效舒緩疲勞</p>
+                        <div class="card-price">$2,500 / 60分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">深層舒緩</span>
+                            <span class="tag">專業技巧</span>
+                            <span class="tag">效果顯著</span>
+                        </div>
                     </div>
                     <div class="card">
-                        <h3>💪 深層組織</h3>
-                        <p>專業深層組織按摩，釋放肌肉緊張，恢復活力</p>
+                        <h3>全身放鬆療程</h3>
+                        <p>完整的全身放鬆體驗，讓您徹底放鬆</p>
+                        <div class="card-price">$3,200 / 90分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">全身護理</span>
+                            <span class="tag">極致享受</span>
+                            <span class="tag">完全放鬆</span>
+                        </div>
                     </div>
                     <div class="card">
-                        <h3>🎯 VIP 雙飛</h3>
-                        <p>頂級 VIP 服務，雙人專業團隊，打造獨特體驗</p>
+                        <h3>舒壓根部保養</h3>
+                        <p>老饕最愛的服務項目之一</p>
+                        <div class="card-price">$ 2700 up / 40分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">根部護理</span>
+                            <span class="tag">超級舒服</span>
+                            <span class="tag">放鬆身心</span>
+                        </div>
                     </div>
                     <div class="card">
-                        <h3>👨‍👩‍👧 天倫之樂</h3>
-                        <p>溫馨家庭式服務，享受親切的人性化關懷</p>
+                        <h3>帝王水床泡泡浴</h3>
+                        <p>懂得都懂 你知道我知道就好!</p>
+                        <div class="card-price">$ 2700 up / 40分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">超級舒服</span>
+                            <span class="tag">促進循環</span>
+                            <span class="tag">健康養生</span>
+                        </div>
                     </div>
                     <div class="card">
-                        <h3>✨ 客製化服務</h3>
-                        <p>根據您的需求，量身打造專屬的服務體驗</p>
+                        <h3>VIP 雙飛 天倫之樂</h3>
+                        <p>綜合多種服務，頂級享受體驗</p>
+                        <div class="card-price">$ 2700 up / 40分鐘</div>
+                        <div class="card-tags">
+                            <span class="tag">多項服務</span>
+                            <span class="tag">頂級享受</span>
+                            <span class="tag">超值推薦</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -538,31 +663,46 @@
         <!-- 服務品質頁面 -->
         <div id="quality" class="page">
             <div class="content">
-                <h2 class="section-title">⭐ 服務品質承諾</h2>
+                <h2 class="section-title">⭐ 我們的服務品質</h2>
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">追求卓越，為您提供最頂級的體驗</p>
                 <div class="grid">
                     <div class="card">
-                        <h3>100% 私密</h3>
-                        <p>您的隱私是我們最高的優先，絕對保密</p>
+                        <h3>🏰 頂級環境設施</h3>
+                        <p>精心打造的私密空間，配備高級音響、香薰系統、恆溫設施</p>
                     </div>
                     <div class="card">
-                        <h3>頂級服務</h3>
-                        <p>專業團隊，細緻服務，超越期待</p>
+                        <h3>👥 專業技術團隊</h3>
+                        <p>經過嚴格培訓的專業人員，掌握多種按摩和護理技巧</p>
                     </div>
                     <div class="card">
-                        <h3>豪華環境</h3>
-                        <p>精心設計的私密空間，享受最高級的享受</p>
+                        <h3>✨ 頂級產品使用</h3>
+                        <p>採用進口精油、護膚品，確保最佳效果和安全性</p>
                     </div>
                     <div class="card">
-                        <h3>彈性預約</h3>
-                        <p>隨時隨地預約，滿足您的時間需求</p>
+                        <h3>🔒 絕對隱私保護</h3>
+                        <p>完全保密制度，客人隱私是我們最高的優先級</p>
                     </div>
                     <div class="card">
-                        <h3>專業團隊</h3>
-                        <p>經驗豐富，素質優良，提供最佳服務</p>
+                        <h3>🧼 衛生消毒標準</h3>
+                        <p>每次服務後進行深度消毒，符合醫療級衛生標準</p>
                     </div>
                     <div class="card">
-                        <h3>客戶至上</h3>
-                        <p>以客戶滿意度為目標，不斷提升服務品質</p>
+                        <h3>💎 客製化服務</h3>
+                        <p>根據客人需求提供個性化服務方案</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <h3 class="section-title">我們的承諾</h3>
+                    <div class="grid">
+                        <div class="card">
+                            <h3>100% 滿意保證</h3>
+                            <p>如果您對我們的服務不滿意，我們提供退款服務。您的滿意是我們的目標 ! !</p>
+                        </div>
+                        <div class="card">
+                            <h3>24小時客服</h3>
+                            <p>我們的客服團隊隨時待命，為您解答任何問題。聯繫我們，我們會立即回應。</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -572,30 +712,49 @@
         <div id="promotions" class="page">
             <div class="content">
                 <h2 class="section-title">🎉 優惠活動</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>🎁 首次優惠</h3>
-                        <p>首次預約享特別優惠，立即體驗我們的服務</p>
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">享受最優惠的價格，體驗頂級服務</p>
+                <div class="promo-grid">
+                    <div class="promo-card">
+                        <h3>體驗全館2700 隨便點</h3>
+                        <p>新客優惠</p>
+                        <p>看上哪一個 體驗全館2700 隨便點</p>
+                        <div class="promo-code">WELCOME9</div>
+                        <div class="promo-validity">有效期至: 2026年12月31日</div>
                     </div>
-                    <div class="card">
-                        <h3>💳 套票優惠</h3>
-                        <p>購買套票享優惠價格，長期享受高質量服務</p>
+                    <div class="promo-card">
+                        <h3>體驗雙飛服務</h3>
+                        <p>會員優惠</p>
+                        <p>體驗雙飛服務</p>
+                        <div class="promo-code">MEMBER</div>
+                        <div class="promo-validity">有效期至: 長期有效</div>
                     </div>
-                    <div class="card">
-                        <h3>👥 團體優惠</h3>
-                        <p>多人預約享團體優惠，一起享受美好時光</p>
+                    <div class="promo-card">
+                        <h3>體驗水床服務</h3>
+                        <p>套餐優惠</p>
+                        <p>體驗水床服務</p>
+                        <div class="promo-code">PACKAGE</div>
+                        <div class="promo-validity">有效期至: 2026年12月31日</div>
                     </div>
-                    <div class="card">
-                        <h3>📱 LINE 優惠</h3>
-                        <p>加入 LINE 官方帳號，獲得最新優惠資訊</p>
+                    <div class="promo-card">
+                        <h3>體驗變裝服務</h3>
+                        <p>套餐獎勵</p>
+                        <p>變成你想要的樣子</p>
+                        <div class="promo-code">REFER</div>
+                        <div class="promo-validity">有效期至: 長期有效</div>
                     </div>
-                    <div class="card">
-                        <h3>🎯 會員優惠</h3>
-                        <p>成為會員，享受專屬優惠和特殊待遇</p>
+                    <div class="promo-card">
+                        <h3>抽獎體驗外出服務</h3>
+                        <p>生日月優惠</p>
+                        <p>神秘小優惠趕緊來搶取</p>
+                        <div class="promo-code">BIRTHDAY</div>
+                        <div class="promo-validity">有效期至: 長期有效</div>
                     </div>
-                    <div class="card">
-                        <h3>🌟 推薦優惠</h3>
-                        <p>推薦朋友預約，雙方都享受優惠獎勵</p>
+                    <div class="promo-card">
+                        <h3>專享福利</h3>
+                        <p>VIP 會員計畫</p>
+                        <p>升級為 VIP 會員享受專屬服務</p>
+                        <div class="promo-code">VIP</div>
+                        <div class="promo-validity">有效期至: 長期有效</div>
                     </div>
                 </div>
             </div>
@@ -605,22 +764,40 @@
         <div id="contact" class="page">
             <div class="content">
                 <h2 class="section-title">📞 聯絡我們</h2>
-                <div class="grid">
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">有任何問題或建議，歡迎隨時與我們聯繫</p>
+                <div class="grid" style="margin-bottom: 3rem;">
                     <div class="card">
                         <h3>💬 LINE 客服</h3>
-                        <p>加入我們的 LINE 官方帳號，隨時為您服務</p>
+                        <p>最快速的聯繫方式</p>
+                        <p style="margin-top: 1rem; font-weight: bold; color: #ffd700;">@yeyu057</p>
                         <a href="https://line.me/ti/p/2JZxGd_ERb" class="btn" style="margin-top: 1rem; display: inline-block;">加入 LINE</a>
                     </div>
                     <div class="card">
-                        <h3>📍 營業時間</h3>
-                        <p>每日下午 1:00pm - 晚上 11:30pm</p>
-                        <p style="margin-top: 1rem; color: #999;">一律現金交易</p>
+                        <h3>🕐 營業時間</h3>
+                        <p>隨時歡迎您光臨</p>
+                        <p style="margin-top: 1rem; font-weight: bold; color: #ffd700;">13:00 - 23:30</p>
                     </div>
-                    <div class="card">
-                        <h3>🔒 隱私保護</h3>
-                        <p>尊重彼此隱私，網路不談敏感話題</p>
-                        <p style="margin-top: 1rem; color: #999;">您的信息絕對安全</p>
+                </div>
+
+                <h3 class="section-title" style="margin-top: 3rem;">留下您的訊息</h3>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="text" placeholder="請輸入您的姓名">
                     </div>
+                    <div class="form-group">
+                        <label>電話</label>
+                        <input type="tel" placeholder="請輸入您的電話">
+                    </div>
+                    <div class="form-group">
+                        <label>電子郵件</label>
+                        <input type="email" placeholder="請輸入您的電子郵件">
+                    </div>
+                    <div class="form-group">
+                        <label>訊息</label>
+                        <textarea placeholder="請輸入您的訊息"></textarea>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">送出訊息</button>
                 </div>
             </div>
         </div>
