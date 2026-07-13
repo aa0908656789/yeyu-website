@@ -7,13 +7,20 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Microsoft YaHei', Arial, sans-serif; background: #0a0a0a; color: #e0e0e0; }
-        nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.95); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid rgba(218, 165, 32, 0.2); }
+        
+        /* 跑馬燈 */
+        .marquee { background: linear-gradient(135deg, #daa520, #ffd700); color: #000; padding: 0.8rem 2rem; overflow: hidden; font-weight: bold; position: fixed; top: 0; width: 100%; z-index: 1001; }
+        .marquee-content { display: flex; animation: scroll 20s linear infinite; white-space: nowrap; }
+        .marquee-item { padding: 0 2rem; }
+        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        
+        nav { position: fixed; top: 60px; width: 100%; background: rgba(10, 10, 10, 0.95); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; border-bottom: 1px solid rgba(218, 165, 32, 0.2); }
         nav .logo { font-size: 1.5rem; font-weight: bold; color: #daa520; }
         nav ul { display: flex; list-style: none; gap: 2rem; flex-wrap: wrap; }
         nav a { color: #e0e0e0; text-decoration: none; cursor: pointer; transition: color 0.3s; font-size: 0.9rem; }
         nav a:hover, nav a.active { color: #daa520; }
         .nav-button { background: linear-gradient(135deg, #daa520, #ffd700); color: #000; padding: 0.5rem 1.5rem; border: none; border-radius: 25px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.9rem; }
-        .container { margin-top: 80px; padding: 2rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+        .container { margin-top: 140px; padding: 2rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
         .page { display: none; }
         .page.active { display: block; }
         h1, h2 { color: #daa520; margin: 2rem 0 1rem 0; }
@@ -55,10 +62,22 @@
             nav a { font-size: 0.8rem; }
             .services-grid { grid-template-columns: 1fr; }
             .models-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .marquee { padding: 0.5rem 1rem; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
+    <!-- 跑馬燈 -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <span class="marquee-item">🌟 最新上菜妹妹已到位 🌟</span>
+            <span class="marquee-item">💎 VIP 雙飛服務熱烈推薦 💎</span>
+            <span class="marquee-item">🎁 新客優惠進行中 🎁</span>
+            <span class="marquee-item">✨ 水床泡泡浴體驗 ✨</span>
+            <span class="marquee-item">🌟 最新上菜妹妹已到位 🌟</span>
+        </div>
+    </div>
+
     <nav>
         <div class="logo">🌙 夜語</div>
         <ul>
@@ -83,103 +102,7 @@
         <div id="services" class="page">
             <h2>🌟 服務風格</h2>
             <p style="text-align: center; margin-bottom: 2rem; color: #b0b0b0;">選擇最適合您的服務，享受頂級體驗</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="images/service-massage-1.png" alt="精油舒壓按摩" onerror="this.style.display='none'">
-                    </div>
-                    <div class="service-info">
-                        <div class="service-name">💆 精油舒壓按摩</div>
-                        <div class="service-desc">使用頂級精油，專業手法舒緩身心壓力</div>
-                        <div class="service-price">$2,700 / 60分鐘</div>
-                        <div class="service-tags">
-                            <span class="tag">頂級精油</span>
-                            <span class="tag">專業手法</span>
-                            <span class="tag">私密空間</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="images/service-massage-2.png" alt="深層組織按摩" onerror="this.style.display='none'">
-                    </div>
-                    <div class="service-info">
-                        <div class="service-name">🏋️ 深層組織按摩</div>
-                        <div class="service-desc">針對肌肉深層，有效舒緩疲勞</div>
-                        <div class="service-price">$2,500 / 60分鐘</div>
-                        <div class="service-tags">
-                            <span class="tag">深層舒緩</span>
-                            <span class="tag">專業技巧</span>
-                            <span class="tag">效果顯著</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="images/service-massage-3.png" alt="全身放鬆療程" onerror="this.style.display='none'">
-                    </div>
-                    <div class="service-info">
-                        <div class="service-name">🧘 全身放鬆療程</div>
-                        <div class="service-desc">完整的全身放鬆體驗，讓您徹底放鬆</div>
-                        <div class="service-price">$3,200 / 90分鐘</div>
-                        <div class="service-tags">
-                            <span class="tag">全身護理</span>
-                            <span class="tag">極致享受</span>
-                            <span class="tag">完全放鬆</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="images/service-massage-4.png" alt="舒壓根部保養" onerror="this.style.display='none'">
-                    </div>
-                    <div class="service-info">
-                        <div class="service-name">🌿 舒壓根部保養</div>
-                        <div class="service-desc">老饕最愛的服務項目之一</div>
-                        <div class="service-price">$2,700 up / 40分鐘</div>
-                        <div class="service-tags">
-                            <span class="tag">根部護理</span>
-                            <span class="tag">超級舒服</span>
-                            <span class="tag">放鬆身心</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="images/service-bubble-bath.png" alt="帝王水床泡泡浴" onerror="this.style.display='none'">
-                    </div>
-                    <div class="service-info">
-                        <div class="service-name">🛁 帝王水床泡泡浴</div>
-                        <div class="service-desc">懂得都懂 你知道我知道就好!</div>
-                        <div class="service-price">$2,700 up / 40分鐘</div>
-                        <div class="service-tags">
-                            <span class="tag">超級舒服</span>
-                            <span class="tag">促進循環</span>
-                            <span class="tag">健康養生</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="images/service-vip-room.png" alt="VIP 雙飛 天倫之樂" onerror="this.style.display='none'">
-                    </div>
-                    <div class="service-info">
-                        <div class="service-name">👯 VIP 雙飛 天倫之樂</div>
-                        <div class="service-desc">綜合多種服務，頂級享受體驗</div>
-                        <div class="service-price">$2,700 up / 40分鐘</div>
-                        <div class="service-tags">
-                            <span class="tag">多項服務</span>
-                            <span class="tag">頂級享受</span>
-                            <span class="tag">超值推薦</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="services-grid" id="servicesGrid"></div>
         </div>
 
         <!-- 最新上菜妹妹 -->
@@ -208,6 +131,15 @@
     </div>
 
     <script>
+        const services = [
+            { name: '💆 精油舒壓按摩', desc: '使用頂級精油，專業手法舒緩身心壓力', price: '$2,700 / 60分鐘', tags: ['頂級精油', '專業手法', '私密空間'], img: 'images/service-massage-1.png' },
+            { name: '🏋️ 深層組織按摩', desc: '針對肌肉深層，有效舒緩疲勞', price: '$2,500 / 60分鐘', tags: ['深層舒緩', '專業技巧', '效果顯著'], img: 'images/service-massage-2.png' },
+            { name: '🧘 全身放鬆療程', desc: '完整的全身放鬆體驗，讓您徹底放鬆', price: '$3,200 / 90分鐘', tags: ['全身護理', '極致享受', '完全放鬆'], img: 'images/service-massage-3.png' },
+            { name: '🌿 舒壓根部保養', desc: '老饕最愛的服務項目之一', price: '$2,700 up / 40分鐘', tags: ['根部護理', '超級舒服', '放鬆身心'], img: 'images/service-massage-4.png' },
+            { name: '🛁 帝王水床泡泡浴', desc: '懂得都懂 你知道我知道就好!', price: '$2,700 up / 40分鐘', tags: ['超級舒服', '促進循環', '健康養生'], img: 'images/service-bubble-bath.png' },
+            { name: '👯 VIP 雙飛 天倫之樂', desc: '綜合多種服務，頂級享受體驗', price: '$2,700 up / 40分鐘', tags: ['多項服務', '頂級享受', '超值推薦'], img: 'images/service-vip-room.png' }
+        ];
+
         const models = [
             { num: '1號', age: '22 歲', type: '活潑型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_1.jpg', badge: '最新上菜' },
             { num: '2號', age: '18 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_2.jpg', badge: '' },
@@ -231,20 +163,43 @@
             { num: '20號', age: '23 歲', type: '知性型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_20.jpg', badge: '' },
             { num: '21號', age: '18 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_21.jpg', badge: '' },
             { num: '22號', age: '19 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_22.jpg', badge: '' },
-            { num: '23號', age: '26 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_1.jpg', badge: '' },
-            { num: '24號', age: '25 歲', type: '甜美型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_2.jpg', badge: '' },
-            { num: '25號', age: '21 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_3.jpg', badge: '' },
-            { num: '26號', age: '23 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_4.jpg', badge: '' },
-            { num: '27號', age: '19 歲', type: '優雅型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_5.jpg', badge: '' },
-            { num: '28號', age: '20 歲', type: '性感型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_6.jpg', badge: '' },
-            { num: '29號', age: '27 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_7.jpg', badge: '' },
-            { num: '30號', age: '22 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_8.jpg', badge: '' },
-            { num: '31號', age: '18 歲', type: '性感型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_9.jpg', badge: '' },
-            { num: '32號', age: '20 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_1.jpg', badge: '' },
-            { num: '33號', age: '18 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_2.jpg', badge: '' },
-            { num: '34號', age: '19 歲', type: '優雅型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_3.jpg', badge: '' },
-            { num: '35號', age: '23 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_202678_260708_4.jpg', badge: '' }
+            { num: '23號', age: '26 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_1.jpg', badge: '' },
+            { num: '24號', age: '25 歲', type: '甜美型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_2.jpg', badge: '' },
+            { num: '25號', age: '21 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_3.jpg', badge: '' },
+            { num: '26號', age: '23 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_4.jpg', badge: '' },
+            { num: '27號', age: '19 歲', type: '優雅型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_5.jpg', badge: '' },
+            { num: '28號', age: '20 歲', type: '性感型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_6.jpg', badge: '' },
+            { num: '29號', age: '27 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_7.jpg', badge: '' },
+            { num: '30號', age: '22 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_8.jpg', badge: '' },
+            { num: '31號', age: '18 歲', type: '性感型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_9.jpg', badge: '' },
+            { num: '32號', age: '20 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_10.jpg', badge: '' },
+            { num: '33號', age: '18 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_11.jpg', badge: '' },
+            { num: '34號', age: '19 歲', type: '優雅型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_12.jpg', badge: '' },
+            { num: '35號', age: '23 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_13.jpg', badge: '' }
         ];
+
+        function initServices() {
+            const grid = document.getElementById('servicesGrid');
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.onclick = () => openModal(service.img);
+                card.innerHTML = `
+                    <div class="service-image">
+                        <img src="${service.img}" alt="${service.name}" onerror="this.style.display='none'">
+                    </div>
+                    <div class="service-info">
+                        <div class="service-name">${service.name}</div>
+                        <div class="service-desc">${service.desc}</div>
+                        <div class="service-price">${service.price}</div>
+                        <div class="service-tags">
+                            ${service.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
 
         function initModels() {
             const grid = document.getElementById('modelGrid');
@@ -286,7 +241,11 @@
             window.scrollTo(0, 0);
         }
 
-        document.addEventListener('DOMContentLoaded', initModels);
+        document.addEventListener('DOMContentLoaded', () => {
+            initServices();
+            initModels();
+        });
+        
         window.onclick = function(e) {
             const modal = document.getElementById('imageModal');
             if (e.target === modal) closeModal();
