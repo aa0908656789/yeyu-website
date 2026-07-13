@@ -250,93 +250,6 @@
             line-height: 1.8;
         }
 
-        /* 圖片庫 */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            border: 1px solid rgba(218, 165, 32, 0.3);
-            cursor: pointer;
-            transition: all 0.3s;
-            aspect-ratio: 3/4;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            border-color: #daa520;
-            box-shadow: 0 10px 30px rgba(218, 165, 32, 0.3);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* 模態框 */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            animation: fadeIn 0.3s;
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            background: #1a1a1a;
-            border-radius: 10px;
-            padding: 2rem;
-            border: 1px solid rgba(218, 165, 32, 0.3);
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 5px;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #daa520;
-            background: none;
-            border: none;
-        }
-
-        .modal-close:hover {
-            color: #ffd700;
-        }
-
         /* 頁腳 */
         footer {
             background: rgba(10, 10, 10, 0.95);
@@ -373,10 +286,6 @@
 
             .grid {
                 grid-template-columns: 1fr;
-            }
-
-            .image-gallery {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
 
@@ -525,8 +434,31 @@
         <div id="models" class="page">
             <div class="content">
                 <h2 class="section-title">👸 最新上菜妹妹</h2>
-                <div class="image-gallery" id="imageGallery">
-                    <!-- 圖片會由 JavaScript 動態生成 -->
+                <div class="grid">
+                    <div class="card">
+                        <h3>1號</h3>
+                        <p>年輕活力，專業服務，讓您享受最佳體驗</p>
+                    </div>
+                    <div class="card">
+                        <h3>3號</h3>
+                        <p>溫柔貼心，細緻服務，打造難忘時光</p>
+                    </div>
+                    <div class="card">
+                        <h3>4號</h3>
+                        <p>熱情洋溢，活力十足，帶給您歡樂體驗</p>
+                    </div>
+                    <div class="card">
+                        <h3>5號</h3>
+                        <p>優雅氣質，專業素養，提升服務品質</p>
+                    </div>
+                    <div class="card">
+                        <h3>6號</h3>
+                        <p>親切友善，用心服務，讓您賓至如歸</p>
+                    </div>
+                    <div class="card">
+                        <h3>8號</h3>
+                        <p>專業認真，細心體貼，打造完美體驗</p>
+                    </div>
                 </div>
                 <div style="text-align: center; margin-top: 2rem;">
                     <p style="color: #999;">✨ 首次預約歡迎現場與妹妹溝通</p>
@@ -626,14 +558,6 @@
         </div>
     </div>
 
-    <!-- 圖片模態框 -->
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">&times;</button>
-            <img id="modalImage" src="" alt="">
-        </div>
-    </div>
-
     <!-- 浮窗按鈕 -->
     <a href="https://line.me/ti/p/2JZxGd_ERb" class="floating-button pulse" title="加入 LINE 預約">💬</a>
 
@@ -644,97 +568,28 @@
     </footer>
 
     <script>
-        // 圖片列表
-        const images = [
-            'images/LINE_ALBUM_2026.7.8_260709_1.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_2.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_3.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_4.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_5.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_6.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_7.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_8.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_9.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_10.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_11.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_12.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_13.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_14.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_15.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_16.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_17.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_18.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_19.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_20.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_21.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_22.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_1.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_2.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_3.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_4.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_5.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_6.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_7.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_8.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_9.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_10.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_11.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_12.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_13.jpg'
-        ];
-
-        function initGallery() {
-            const gallery = document.getElementById('imageGallery');
-            images.forEach((img, index) => {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.onclick = () => openModal(img);
-                const imgElement = document.createElement('img');
-                imgElement.src = img;
-                imgElement.alt = `妹妹 ${index + 1}`;
-                item.appendChild(imgElement);
-                gallery.appendChild(item);
-            });
-        }
-
-        function openModal(src) {
-            const modal = document.getElementById('imageModal');
-            const modalImage = document.getElementById('modalImage');
-            modalImage.src = src;
-            modal.classList.add('active');
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.classList.remove('active');
-        }
-
         function showPage(pageId) {
+            // 隱藏所有頁面
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
+
+            // 顯示選中的頁面
             document.getElementById(pageId).classList.add('active');
 
+            // 更新導航欄
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => link.classList.remove('active'));
             event.target.classList.add('active');
 
+            // 滾動到頂部
             window.scrollTo(0, 0);
         }
 
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
-            initGallery();
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks[0].classList.add('active');
         });
-
-        // 點擊模態框外部關閉
-        window.onclick = function(event) {
-            const modal = document.getElementById('imageModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
     </script>
 </body>
 </html>
