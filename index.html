@@ -53,6 +53,19 @@
         .feature-card h3 { color: #d4af37; margin-bottom: 10px; font-size: 14px; }
         .feature-card p { font-size: 12px; color: #ccc; }
         
+        /* Models Section */
+        .models { background: rgba(212, 175, 55, 0.05); padding: 40px 0; }
+        .models h2 { font-size: 28px; color: #d4af37; margin-bottom: 30px; text-align: center; }
+        .models-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+        .model-card { background: rgba(0,0,0,0.5); border-radius: 8px; overflow: hidden; border: 1px solid #d4af37; transition: transform 0.3s; }
+        .model-card:hover { transform: translateY(-5px); }
+        .model-image { width: 100%; height: 220px; object-fit: cover; }
+        .model-info { padding: 15px; text-align: center; }
+        .model-info h3 { color: #d4af37; margin-bottom: 8px; font-size: 16px; }
+        .model-info p { color: #ccc; font-size: 12px; margin-bottom: 10px; }
+        .model-btn { display: inline-block; background: #d4af37; color: #000; padding: 8px 16px; border-radius: 5px; text-decoration: none; font-size: 12px; font-weight: bold; }
+        .model-btn:hover { background: #e5c158; }
+        
         /* Services Section */
         .services { background: rgba(212, 175, 55, 0.05); padding: 40px 0; }
         .services h2 { font-size: 28px; color: #d4af37; margin-bottom: 30px; text-align: center; }
@@ -94,6 +107,9 @@
             .feature-card { padding: 15px; }
             .feature-card h3 { font-size: 12px; }
             .feature-card p { font-size: 11px; }
+            
+            .models-grid { grid-template-columns: repeat(2, 1fr); }
+            .model-image { height: 150px; }
             
             .services-grid { grid-template-columns: 1fr; }
             .service-image { height: 150px; }
@@ -162,7 +178,7 @@
                     <p>夜色低語·專屬於你的秘密時光</p>
                     <div class="hero-buttons">
                         <a href="https://line.me/ti/p/2JZxGd_ERb" class="btn btn-primary">立即預約</a>
-                        <button class="btn" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">了解服務</button>
+                        <button class="btn" onclick="document.getElementById('models').scrollIntoView({behavior: 'smooth'})">看妹妹</button>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -205,28 +221,63 @@
     </section>
     
     <!-- Models Section -->
-    <section id="models" style="background: rgba(212, 175, 55, 0.05); padding: 40px 0;">
+    <section class="models" id="models">
         <div class="container">
-            <h2 style="font-size: 28px; color: #d4af37; margin-bottom: 30px; text-align: center;">🌟 最新上菜妹妹</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
-                <a href="https://line.me/ti/p/2JZxGd_ERb" style="background: rgba(212, 175, 55, 0.2); border: 2px solid #d4af37; border-radius: 8px; padding: 20px; text-align: center; text-decoration: none; color: #d4af37; font-weight: bold; transition: all 0.3s;">
-                    💫 新妹妹 1<br><span style="font-size: 12px; color: #ccc;">點我預約</span>
-                </a>
-                <a href="https://line.me/ti/p/2JZxGd_ERb" style="background: rgba(212, 175, 55, 0.2); border: 2px solid #d4af37; border-radius: 8px; padding: 20px; text-align: center; text-decoration: none; color: #d4af37; font-weight: bold; transition: all 0.3s;">
-                    💫 新妹妹 2<br><span style="font-size: 12px; color: #ccc;">點我預約</span>
-                </a>
-                <a href="https://line.me/ti/p/2JZxGd_ERb" style="background: rgba(212, 175, 55, 0.2); border: 2px solid #d4af37; border-radius: 8px; padding: 20px; text-align: center; text-decoration: none; color: #d4af37; font-weight: bold; transition: all 0.3s;">
-                    💫 新妹妹 3<br><span style="font-size: 12px; color: #ccc;">點我預約</span>
-                </a>
-                <a href="https://line.me/ti/p/2JZxGd_ERb" style="background: rgba(212, 175, 55, 0.2); border: 2px solid #d4af37; border-radius: 8px; padding: 20px; text-align: center; text-decoration: none; color: #d4af37; font-weight: bold; transition: all 0.3s;">
-                    💫 新妹妹 4<br><span style="font-size: 12px; color: #ccc;">點我預約</span>
-                </a>
-                <a href="https://line.me/ti/p/2JZxGd_ERb" style="background: rgba(212, 175, 55, 0.2); border: 2px solid #d4af37; border-radius: 8px; padding: 20px; text-align: center; text-decoration: none; color: #d4af37; font-weight: bold; transition: all 0.3s;">
-                    💫 新妹妹 5<br><span style="font-size: 12px; color: #ccc;">點我預約</span>
-                </a>
-                <a href="https://line.me/ti/p/2JZxGd_ERb" style="background: rgba(212, 175, 55, 0.2); border: 2px solid #d4af37; border-radius: 8px; padding: 20px; text-align: center; text-decoration: none; color: #d4af37; font-weight: bold; transition: all 0.3s;">
-                    💫 新妹妹 6<br><span style="font-size: 12px; color: #ccc;">點我預約</span>
-                </a>
+            <h2>🌟 最新上菜妹妹</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <img src="images/LINE_ALBUM_2026.7.8_260709_1.jpg" alt="妹妹 1" class="model-image">
+                    <div class="model-info">
+                        <h3>新妹妹 1</h3>
+                        <p>年輕活力</p>
+                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <img src="images/LINE_ALBUM_2026.7.8_260709_2.jpg" alt="妹妹 2" class="model-image">
+                    <div class="model-info">
+                        <h3>新妹妹 2</h3>
+                        <p>溫柔嬌媚</p>
+                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <img src="images/LINE_ALBUM_2026.7.8_260709_3.jpg" alt="妹妹 3" class="model-image">
+                    <div class="model-info">
+                        <h3>新妹妹 3</h3>
+                        <p>性感迷人</p>
+                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <img src="images/LINE_ALBUM_2026.7.8_260709_4.jpg" alt="妹妹 4" class="model-image">
+                    <div class="model-info">
+                        <h3>新妹妹 4</h3>
+                        <p>專業體貼</p>
+                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <img src="images/LINE_ALBUM_2026.7.8_260709_5.jpg" alt="妹妹 5" class="model-image">
+                    <div class="model-info">
+                        <h3>新妹妹 5</h3>
+                        <p>甜蜜可人</p>
+                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <img src="images/LINE_ALBUM_2026.7.8_260709_6.jpg" alt="妹妹 6" class="model-image">
+                    <div class="model-info">
+                        <h3>新妹妹 6</h3>
+                        <p>氣質優雅</p>
+                        <a href="https://line.me/ti/p/2JZxGd_ERb" class="model-btn">點我預約</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
