@@ -273,6 +273,72 @@
             font-size: 0.85rem;
         }
 
+        /* 模特兒卡片 */
+        .model-card {
+            background: rgba(218, 165, 32, 0.05);
+            border: 2px solid rgba(218, 165, 32, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            border-color: #daa520;
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.3);
+        }
+
+        .model-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 133%;
+            overflow: hidden;
+            background: rgba(218, 165, 32, 0.1);
+        }
+
+        .model-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .model-rating {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(218, 165, 32, 0.9);
+            color: #000;
+            padding: 0.5rem 0.8rem;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .model-info {
+            padding: 1.5rem;
+        }
+
+        .model-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .model-detail {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .model-detail strong {
+            color: #daa520;
+        }
+
         /* 圖片庫 */
         .image-gallery {
             display: grid;
@@ -650,8 +716,9 @@
         <div id="models" class="page">
             <div class="content">
                 <h2 class="section-title">👸 最新上菜妹妹</h2>
-                <div class="image-gallery" id="imageGallery">
-                    <!-- 圖片會由 JavaScript 動態生成 -->
+                <p style="text-align: center; margin-bottom: 3rem; color: #b0b0b0;">選擇您心儀的模特兒，享受專屬服務</p>
+                <div class="grid" id="modelGrid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+                    <!-- 模特兒卡片會由 JavaScript 動態生成 -->
                 </div>
                 <div style="text-align: center; margin-top: 2rem;">
                     <p style="color: #999;">✨ 首次預約歡迎現場與妹妹溝通</p>
@@ -821,56 +888,64 @@
     </footer>
 
     <script>
-        // 圖片列表
-        const images = [
-            'images/LINE_ALBUM_2026.7.8_260709_1.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_2.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_3.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_4.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_5.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_6.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_7.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_8.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_9.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_10.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_11.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_12.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_13.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_14.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_15.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_16.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_17.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_18.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_19.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_20.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_21.jpg',
-            'images/LINE_ALBUM_2026.7.8_260709_22.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_1.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_2.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_3.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_4.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_5.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_6.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_7.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_8.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_9.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_10.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_11.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_12.jpg',
-            'images/LINE_ALBUM_昨天沒傳到的_260709_13.jpg'
+        // 妹妹資訊
+        const models = [
+            { num: '1號', age: '22 歲', type: '活潑型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_1.jpg' },
+            { num: '2號', age: '18 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_2.jpg' },
+            { num: '3號', age: '21 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_3.jpg' },
+            { num: '4號', age: '26 歲', type: '知性型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_4.jpg' },
+            { num: '5號', age: '24 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_5.jpg' },
+            { num: '6號', age: '20 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_6.jpg' },
+            { num: '7號', age: '25 歲', type: '優雅型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_7.jpg' },
+            { num: '8號', age: '19 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_8.jpg' },
+            { num: '9號', age: '22 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_9.jpg' },
+            { num: '10號', age: '19 歲', type: '活潑型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_10.jpg' },
+            { num: '11號', age: '18 歲', type: '優雅型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_11.jpg' },
+            { num: '12號', age: '18 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_12.jpg' },
+            { num: '13號', age: '27 歲', type: '知性型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_13.jpg' },
+            { num: '14號', age: '26 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_14.jpg' },
+            { num: '15號', age: '19 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_15.jpg' },
+            { num: '16號', age: '27 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_16.jpg' },
+            { num: '17號', age: '20 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_17.jpg' },
+            { num: '18號', age: '28 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_18.jpg' },
+            { num: '19號', age: '21 歲', type: '甜美型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_19.jpg' },
+            { num: '20號', age: '23 歲', type: '知性型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_20.jpg' },
+            { num: '21號', age: '18 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_21.jpg' },
+            { num: '22號', age: '19 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_2026.7.8_260709_22.jpg' },
+            { num: '23號', age: '26 歲', type: '調皮型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_1.jpg' },
+            { num: '24號', age: '25 歲', type: '甜美型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_2.jpg' },
+            { num: '25號', age: '21 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_3.jpg' },
+            { num: '26號', age: '23 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_4.jpg' },
+            { num: '27號', age: '19 歲', type: '優雅型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_5.jpg' },
+            { num: '28號', age: '20 歲', type: '性感型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_6.jpg' },
+            { num: '29號', age: '27 歲', type: '成熟型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_7.jpg' },
+            { num: '30號', age: '22 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_8.jpg' },
+            { num: '31號', age: '18 歲', type: '性感型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_9.jpg' },
+            { num: '32號', age: '20 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_10.jpg' },
+            { num: '33號', age: '18 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_11.jpg' },
+            { num: '34號', age: '19 歲', type: '優雅型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_12.jpg' },
+            { num: '35號', age: '23 歲', type: '溫柔型', rating: '4.8', img: 'images/LINE_ALBUM_昨天沒傳到的_260709_13.jpg' }
         ];
 
-        function initGallery() {
-            const gallery = document.getElementById('imageGallery');
-            images.forEach((img, index) => {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.onclick = () => openModal(img);
-                const imgElement = document.createElement('img');
-                imgElement.src = img;
-                imgElement.alt = `妹妹 ${index + 1}`;
-                item.appendChild(imgElement);
-                gallery.appendChild(item);
+        function initModels() {
+            const grid = document.getElementById('modelGrid');
+            models.forEach((model, index) => {
+                const card = document.createElement('div');
+                card.className = 'model-card';
+                card.onclick = () => openModal(model.img);
+                card.innerHTML = `
+                    <div class="model-image">
+                        <img src="${model.img}" alt="${model.num}">
+                        <div class="model-rating">★ ${model.rating}</div>
+                    </div>
+                    <div class="model-info">
+                        <div class="model-number">${model.num}</div>
+                        <div class="model-detail"><strong>年齡:</strong> ${model.age}</div>
+                        <div class="model-detail"><strong>專長:</strong> ${model.type}</div>
+                        <div class="model-detail"><strong>營業時間:</strong> 每日 13:00 - 23:30</div>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
         }
 
@@ -900,7 +975,7 @@
 
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
-            initGallery();
+            initModels();
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks[0].classList.add('active');
         });
