@@ -21,6 +21,12 @@
         .nav-btn { background: #d4af37; color: #000; padding: 10px 20px; border-radius: 25px; cursor: pointer; text-decoration: none; font-weight: bold; }
         .nav-btn:hover { background: #e5c158; }
         
+        /* Marquee */
+        .marquee-container { background: #d4af37; color: #000; padding: 12px 0; overflow: hidden; }
+        .marquee-content { display: flex; animation: scroll 20s linear infinite; white-space: nowrap; font-weight: bold; font-size: 16px; }
+        .marquee-item { padding: 0 40px; display: inline-block; }
+        @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        
         /* Hero Section with Image */
         .hero { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 60px 0; position: relative; overflow: hidden; }
         .hero-content { display: flex; align-items: center; gap: 40px; }
@@ -79,10 +85,26 @@
             .hero h1 { font-size: 32px; }
             .hero-buttons { flex-direction: column; }
             .services-grid { grid-template-columns: 1fr; }
+            .marquee-content { font-size: 14px; }
+            .marquee-item { padding: 0 20px; }
         }
     </style>
 </head>
 <body>
+    <!-- Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item">🌟 最新上菜妹妹已到位 🌟</span>
+            <span class="marquee-item">💎 VIP 雙飛服務熱烈推薦 💎</span>
+            <span class="marquee-item">🎁 新客優惠進行中 🎁</span>
+            <span class="marquee-item">✨ 水床泡泡浴體驗 ✨</span>
+            <span class="marquee-item">🌟 最新上菜妹妹已到位 🌟</span>
+            <span class="marquee-item">💎 VIP 雙飛服務熱烈推薦 💎</span>
+            <span class="marquee-item">🎁 新客優惠進行中 🎁</span>
+            <span class="marquee-item">✨ 水床泡泡浴體驗 ✨</span>
+        </div>
+    </div>
+    
     <!-- Navigation -->
     <nav>
         <div class="container">
